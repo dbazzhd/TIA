@@ -2,6 +2,7 @@
 using Basic_Project_Generator.Models;
 using Basic_Project_Generator.Services;
 using Siemens.Engineering;
+using Siemens.Engineering.Library.Types;
 using System;
 using System.Linq;
 using System.Reflection;
@@ -10,6 +11,7 @@ using System.Windows.Forms;
 
 using _HW = Siemens.Engineering.HW;
 using _SW = Siemens.Engineering.SW;
+using _Lib = Siemens.Engineering.Library;
 
 namespace Basic_Project_Generator.UserInterfaces
 {
@@ -819,28 +821,46 @@ namespace Basic_Project_Generator.UserInterfaces
 
         #endregion // methods
 
+        private _Lib.MasterCopies.MasterCopy EmptyDB = null;
+        private _Lib.MasterCopies.MasterCopy EmptyFB = null;
+        private _Lib.MasterCopies.MasterCopy EmptyFC = null;
+
         private void btn_AddNewGroup_Click(object sender, EventArgs e)
         {
             Console.Clear();
             Project project = _apiWrapper.CurrentProject;
+            Recursive(project.ProjectLibrary.MasterCopyFolder.MasterCopies);
+            FolderStructure(project);
+        }
+        private int idCounter = 0;
+        private void FolderStructure(Project project)
+        {
+
             _HW.DeviceItem PC = null;
-            foreach (_HW.Device device in project.Devices) {
+            foreach (_HW.Device device in project.Devices)
+            {
                 Console.WriteLine($"\t[{device.Name}]");
                 PC = Recursive(device.Items, "\t");
-                if (PC != null) {
+                if (PC != null)
+                {
                     break;
                 }
             }
-            if (PC != null) {
+            if (PC != null)
+            {
                 _HW.Features.SoftwareContainer softwareContainer = PC.GetService<_HW.Features.SoftwareContainer>();
                 _HW.Software software = softwareContainer.Software;
                 Console.WriteLine(software.Name);
                 _SW.PlcSoftware plcSW = software as _SW.PlcSoftware;
                 _SW.Blocks.PlcBlockUserGroup FAA2 = null;
-                foreach (var group in plcSW.BlockGroup.Groups) {
-                    if (group.Name.StartsWith("Organ")) {
-                        foreach (var item in group.Groups) {
-                            if (item.Name == "FAA2") {
+                foreach (var group in plcSW.BlockGroup.Groups)
+                {
+                    if (group.Name.StartsWith("Organ"))
+                    {
+                        foreach (var item in group.Groups)
+                        {
+                            if (item.Name == "FAA2")
+                            {
                                 FAA2 = item;
                                 break;
                             }
@@ -848,19 +868,37 @@ namespace Basic_Project_Generator.UserInterfaces
                         break;
                     }
                 }
-                if (FAA2 != null) {
-                    foreach (var group in FAA2.Groups) {
+                if (FAA2 != null)
+                {
+                    foreach (var group in FAA2.Groups)
+                    {
                         Console.WriteLine($"{group.Name}");
                         if (group.Blocks.Count == 0)
                         {
                             try
                             {
-                                group.Blocks.CreateFB($"{group.Name}_FB", false, 1, _SW.Blocks.ProgrammingLanguage.ProDiag);
+                                string groupNumber = group.Name.Split('-')[0].Trim();
+                                string name = group.Name.Substring(10).Replace("_", "").Replace(" ", "");
+                                _SW.Blocks.PlcBlock fb = group.Blocks.CreateFrom(EmptyFB);
+                                fb.Name = $"FB_{name}_{groupNumber}";
+                                fb.AutoNumber = false;
+                                fb.Number = ++idCounter;
+
+                                _SW.Blocks.PlcBlock db = group.Blocks.CreateFrom(EmptyDB);
+                                db.Name = $"DB_{name}_{groupNumber}";
+                                db.AutoNumber = false;
+                                db.Number = ++idCounter;
+
+                                _SW.Blocks.PlcBlock fc = group.Blocks.CreateFrom(EmptyFC);
+                                fc.Name = $"FC_{name}_{groupNumber}";
+                                fc.AutoNumber = false;
+                                fc.Number = ++idCounter;
                             }
-                            catch (Exception ex) {
-                                Console.WriteLine( ex.Message);
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.Message);
                             }
-                        } 
+                        }
                         else
                         {
                             foreach (var block in group.Blocks)
@@ -868,12 +906,35 @@ namespace Basic_Project_Generator.UserInterfaces
                                 //Console.WriteLine(block.Name);
                             }
                         }
-                        foreach (var subGroup in group.Groups) {
+                        foreach (var subGroup in group.Groups)
+                        {
                             //Console.WriteLine(subGroup.Name);
                         }
                     }
                 }
             }
+        }
+
+        private void Recursive(_Lib.MasterCopies.MasterCopyComposition pMasterCopies)
+        {
+            foreach (var masterCopy in pMasterCopies)
+            {
+                Console.WriteLine("\t" + masterCopy.Name);
+                switch (masterCopy.Name)
+                {
+                    case "Empty DB":
+                        EmptyDB = masterCopy; break;
+                    case "Empty FB":
+                        EmptyFB = masterCopy; break;
+                    case "Empty FC":
+                        EmptyFC = masterCopy; break;
+                }
+            }
+            Console.WriteLine(
+                $"{EmptyDB != null}" +
+                $"{EmptyFB != null}" +
+                $"{EmptyFC != null}"
+            );
         }
 
         private _HW.DeviceItem Recursive(_HW.DeviceItemAssociation pDeviceItems, string pPrefix)
