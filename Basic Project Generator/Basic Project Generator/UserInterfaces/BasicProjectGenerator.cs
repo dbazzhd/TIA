@@ -8,6 +8,9 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 
+using _HW = Siemens.Engineering.HW;
+using _SW = Siemens.Engineering.SW;
+
 namespace Basic_Project_Generator.UserInterfaces
 {
     /// <summary>
@@ -818,11 +821,79 @@ namespace Basic_Project_Generator.UserInterfaces
 
         private void btn_AddNewGroup_Click(object sender, EventArgs e)
         {
-            Siemens.Engineering.HW.DeviceUserGroup group = _apiWrapper.CurrentProject.DeviceGroups.Create("New Group 0");
-            for (int i = 1; i < 10; i++)
-            {
-                group = group.Groups.Create($"New Group {i}");
+            Console.Clear();
+            Project project = _apiWrapper.CurrentProject;
+            _HW.DeviceItem PC = null;
+            foreach (_HW.Device device in project.Devices) {
+                Console.WriteLine($"\t[{device.Name}]");
+                PC = Recursive(device.Items, "\t");
+                if (PC != null) {
+                    break;
+                }
             }
+            if (PC != null) {
+                _HW.Features.SoftwareContainer softwareContainer = PC.GetService<_HW.Features.SoftwareContainer>();
+                _HW.Software software = softwareContainer.Software;
+                Console.WriteLine(software.Name);
+                _SW.PlcSoftware plcSW = software as _SW.PlcSoftware;
+                _SW.Blocks.PlcBlockUserGroup FAA2 = null;
+                foreach (var group in plcSW.BlockGroup.Groups) {
+                    if (group.Name.StartsWith("Organ")) {
+                        foreach (var item in group.Groups) {
+                            if (item.Name == "FAA2") {
+                                FAA2 = item;
+                                break;
+                            }
+                        }
+                        break;
+                    }
+                }
+                if (FAA2 != null) {
+                    foreach (var group in FAA2.Groups) {
+                        Console.WriteLine($"{group.Name}");
+                        if (group.Blocks.Count == 0)
+                        {
+                            try
+                            {
+                                group.Blocks.CreateFB($"{group.Name}_FB", false, 1, _SW.Blocks.ProgrammingLanguage.ProDiag);
+                            }
+                            catch (Exception ex) {
+                                Console.WriteLine( ex.Message);
+                            }
+                        } 
+                        else
+                        {
+                            foreach (var block in group.Blocks)
+                            {
+                                //Console.WriteLine(block.Name);
+                            }
+                        }
+                        foreach (var subGroup in group.Groups) {
+                            //Console.WriteLine(subGroup.Name);
+                        }
+                    }
+                }
+            }
+        }
+
+        private _HW.DeviceItem Recursive(_HW.DeviceItemAssociation pDeviceItems, string pPrefix)
+        {
+            _HW.DeviceItem result = null;
+            foreach (_HW.DeviceItem deviceItem in pDeviceItems)
+            {
+                if (deviceItem.Classification == _HW.DeviceItemClassifications.CPU)
+                {
+                    result = deviceItem;
+                    break;
+                }
+                Console.WriteLine($"{pPrefix}[{deviceItem.Name}] - [{deviceItem.Classification}] - [{deviceItem.PositionNumber}] - [{deviceItem.TypeIdentifier}]");
+                result = Recursive(deviceItem.Items, pPrefix + pPrefix);
+                if (result != null)
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }

@@ -11,3 +11,16 @@ C:\Users\Admin\Desktop\PRIKLADY\Openness\BasicProjectGenerator_SourceCode\BasicP
 C:\Users\Admin\Desktop\PRIKLADY\Openness\BasicProjectGenerator_SourceCode\BasicProjectGenerator\Basic Project Generator\Basic Project Generator\obj\Debug\Basic Project Generator.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Desktop\PRIKLADY\Openness\BasicProjectGenerator_SourceCode\BasicProjectGenerator\Basic Project Generator\Basic Project Generator\obj\Debug\Basic Project Generator.exe
 C:\Users\Admin\Desktop\PRIKLADY\Openness\BasicProjectGenerator_SourceCode\BasicProjectGenerator\Basic Project Generator\Basic Project Generator\obj\Debug\Basic Project Generator.pdb
+C:\Users\Admin\Documents\github\tia\Basic Project Generator\Basic Project Generator\bin\Debug\Assets\DeviceCatalog.xml
+C:\Users\Admin\Documents\github\tia\Basic Project Generator\Basic Project Generator\bin\Debug\Basic Project Generator.exe.config
+C:\Users\Admin\Documents\github\tia\Basic Project Generator\Basic Project Generator\bin\Debug\Basic Project Generator.exe
+C:\Users\Admin\Documents\github\tia\Basic Project Generator\Basic Project Generator\bin\Debug\Basic Project Generator.pdb
+C:\Users\Admin\Documents\github\tia\Basic Project Generator\Basic Project Generator\obj\Debug\Basic Project Generator.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\github\tia\Basic Project Generator\Basic Project Generator\obj\Debug\Basic_Project_Generator.UserInterfaces.BasicProjectGenerator.resources
+C:\Users\Admin\Documents\github\tia\Basic Project Generator\Basic Project Generator\obj\Debug\Basic_Project_Generator.Properties.Resources.resources
+C:\Users\Admin\Documents\github\tia\Basic Project Generator\Basic Project Generator\obj\Debug\Basic_Project_Generator.UserInterfaces.NewTiaPortalProject.resources
+C:\Users\Admin\Documents\github\tia\Basic Project Generator\Basic Project Generator\obj\Debug\Basic_Project_Generator.UserInterfaces.PlcSecuritySettings.resources
+C:\Users\Admin\Documents\github\tia\Basic Project Generator\Basic Project Generator\obj\Debug\Basic Project Generator.csproj.GenerateResource.cache
+C:\Users\Admin\Documents\github\tia\Basic Project Generator\Basic Project Generator\obj\Debug\Basic Project Generator.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\github\tia\Basic Project Generator\Basic Project Generator\obj\Debug\Basic Project Generator.exe
+C:\Users\Admin\Documents\github\tia\Basic Project Generator\Basic Project Generator\obj\Debug\Basic Project Generator.pdb
