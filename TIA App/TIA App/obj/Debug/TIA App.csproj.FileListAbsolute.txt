@@ -1,0 +1,23 @@
+C:\Users\Admin\Documents\Visual Studio 2022\Projects\TIA App\TIA App\bin\Debug\TIA App.exe.config
+C:\Users\Admin\Documents\Visual Studio 2022\Projects\TIA App\TIA App\bin\Debug\TIA App.exe
+C:\Users\Admin\Documents\Visual Studio 2022\Projects\TIA App\TIA App\bin\Debug\TIA App.pdb
+C:\Users\Admin\Documents\Visual Studio 2022\Projects\TIA App\TIA App\obj\Debug\TIA App.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\Visual Studio 2022\Projects\TIA App\TIA App\obj\Debug\TIA_App.Properties.Resources.resources
+C:\Users\Admin\Documents\Visual Studio 2022\Projects\TIA App\TIA App\obj\Debug\TIA App.csproj.GenerateResource.cache
+C:\Users\Admin\Documents\Visual Studio 2022\Projects\TIA App\TIA App\obj\Debug\TIA App.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\Visual Studio 2022\Projects\TIA App\TIA App\obj\Debug\TIA App.exe
+C:\Users\Admin\Documents\Visual Studio 2022\Projects\TIA App\TIA App\obj\Debug\TIA App.pdb
+C:\Users\Admin\Documents\Visual Studio 2022\Projects\TIA App\TIA App\obj\Debug\TIA_App.FormConnect.resources
+C:\Users\Admin\Documents\Visual Studio 2022\Projects\TIA App\TIA App\obj\Debug\TIA_App.FormMain.resources
+C:\Users\Admin\Documents\github\tia\TIA App\TIA App\obj\Debug\TIA App.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\github\tia\TIA App\TIA App\obj\Debug\TIA_App.FormConnect.resources
+C:\Users\Admin\Documents\github\tia\TIA App\TIA App\obj\Debug\TIA_App.FormMain.resources
+C:\Users\Admin\Documents\github\tia\TIA App\TIA App\obj\Debug\TIA_App.Properties.Resources.resources
+C:\Users\Admin\Documents\github\tia\TIA App\TIA App\obj\Debug\TIA App.csproj.GenerateResource.cache
+C:\Users\Admin\Documents\github\tia\TIA App\TIA App\obj\Debug\TIA App.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\github\tia\TIA App\TIA App\obj\Debug\TIA App.exe
+C:\Users\Admin\Documents\github\tia\TIA App\TIA App\obj\Debug\TIA App.pdb
+C:\Users\Admin\Documents\github\tia\TIA App\TIA App\bin\Debug\TIA App.exe.config
+C:\Users\Admin\Documents\github\tia\TIA App\TIA App\bin\Debug\TIA App.exe
+C:\Users\Admin\Documents\github\tia\TIA App\TIA App\bin\Debug\TIA App.pdb
+C:\Users\Admin\Documents\github\tia\TIA App\TIA App\obj\Debug\TIA_App.FormCreateGroup.resources
