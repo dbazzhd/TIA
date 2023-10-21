@@ -73,7 +73,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FormCreateGroup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "FormCreateGroup";
+            this.Text = "Create new Group";
             this.ResumeLayout(false);
             this.PerformLayout();
 

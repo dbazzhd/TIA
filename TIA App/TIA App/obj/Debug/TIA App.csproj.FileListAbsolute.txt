@@ -21,3 +21,4 @@ C:\Users\Admin\Documents\github\tia\TIA App\TIA App\bin\Debug\TIA App.exe.config
 C:\Users\Admin\Documents\github\tia\TIA App\TIA App\bin\Debug\TIA App.exe
 C:\Users\Admin\Documents\github\tia\TIA App\TIA App\bin\Debug\TIA App.pdb
 C:\Users\Admin\Documents\github\tia\TIA App\TIA App\obj\Debug\TIA_App.FormCreateGroup.resources
+C:\Users\Admin\Documents\github\tia\TIA App\TIA App\obj\Debug\TIA_App.FormCreateBlock.resources

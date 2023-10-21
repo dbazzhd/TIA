@@ -22,6 +22,7 @@ namespace TIA_App {
         public static _S.TiaPortal TiaPortal = null;
         public static _S.Project Project => TiaPortal?.Projects.FirstOrDefault();
         public static _LIB.ProjectLibrary ProjectLibrary => Project?.ProjectLibrary;
+        public static _LIB.MasterCopies.MasterCopy[] MasterCopies => ProjectLibrary?.MasterCopyFolder.MasterCopies.ToArray();
 
         public static IList<_S.TiaPortalProcess> GetTiaPortalProcesses() => _S.TiaPortal.GetProcesses();
 

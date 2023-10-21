@@ -16,6 +16,8 @@ namespace TIA_App {
         private _SW.Blocks.PlcBlockUserGroupComposition parentGroupComposition = null;
         public _SW.Blocks.PlcBlockUserGroup Result { get; private set; }
 
+        private string groupName => textbox_groupName.Text;
+
         public FormCreateGroup(_SW.Blocks.PlcBlockUserGroupComposition pParentGroupComposition) {
             InitializeComponent();
 
@@ -26,15 +28,15 @@ namespace TIA_App {
         }
 
         private void CheckGroupNameIsNotEmpty() {
-            button_create.Enabled = textbox_groupName.Text.Trim().Length > 0;
+            button_create.Enabled = groupName.Trim().Length > 0;
         }
 
         private void CreateGroup() {
             try {
-                Result = TiaAPI.CreateGroup(parentGroupComposition, textbox_groupName.Text);
+                Result = TiaAPI.CreateGroup(parentGroupComposition, groupName);
             }
             catch (Exception pException) {
-                MessageBox.Show(pException.Message, "Group will not be created!");
+                MessageBox.Show(pException.Message, "Group will not be created!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.Cancel;
             }
         }

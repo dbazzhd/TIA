@@ -80,6 +80,14 @@ namespace TIA_App {
         private static void CreateBlock(this TreeNode pParentNode, _SW.Blocks.PlcBlockComposition pParentBlockComposition) {
             TiaUtils.Log();
             TiaUtils.CheckNull(pParentBlockComposition);
+            using (FormCreateBlock formCreateBlock = new FormCreateBlock(pParentBlockComposition)) {
+                if (formCreateBlock.ShowDialog() == DialogResult.OK) {
+                    TreeNode blockNode = new TreeNode();
+                    blockNode.Initialize(formCreateBlock.Result);
+                    pParentNode.Nodes.Add(blockNode);
+                    pParentNode.Expand();
+                }
+            }
         }
 
         private static void CreateGroup(this TreeNode pParentNode, _SW.Blocks.PlcBlockUserGroupComposition pParentGroupComposition) {
@@ -87,9 +95,8 @@ namespace TIA_App {
             TiaUtils.CheckNull(pParentGroupComposition);
             using (FormCreateGroup formCreateGroup = new FormCreateGroup(pParentGroupComposition)) {
                 if (formCreateGroup.ShowDialog() == DialogResult.OK) {
-                    _SW.Blocks.PlcBlockUserGroup group = formCreateGroup.Result;
                     TreeNode groupNode = new TreeNode();
-                    groupNode.Initialize(group);
+                    groupNode.Initialize(formCreateGroup.Result);
                     pParentNode.Nodes.Add(groupNode);
                     pParentNode.Expand();
                 }

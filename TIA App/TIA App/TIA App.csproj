@@ -66,6 +66,13 @@
       <DependentUpon>FormConnect.cs</DependentUpon>
     </Compile>
     <Compile Include="FormConnect\TiaProcess.cs" />
+    <Compile Include="FormCreateBlock\FormCreateBlock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCreateBlock\FormCreateBlock.Designer.cs">
+      <DependentUpon>FormCreateBlock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCreateBlock\MasterCopy.cs" />
     <Compile Include="FormCreateGroup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +94,9 @@
     <Compile Include="TiaUtils.cs" />
     <EmbeddedResource Include="FormConnect\FormConnect.resx">
       <DependentUpon>FormConnect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCreateBlock\FormCreateBlock.resx">
+      <DependentUpon>FormCreateBlock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormCreateGroup.resx">
       <DependentUpon>FormCreateGroup.cs</DependentUpon>
